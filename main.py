@@ -10,11 +10,14 @@ def welcome():
 
 
 def forgetpass():
-
-    label1 = Label(Login, text=f"your password for the {email2.get()} id is {data[email2.get()]}")
-    label1.pack()
-    button1 = Button(Login, text="sign up", command=signup)
-    button1.pack()
+    if email2.get() not in maills:
+        label22 = Label(Login,text="userid not found \n")
+        label22.pack()
+    elif email2.get() in maills:
+        label1 = Label(Login, text=f"your password for the {email2.get()} id is {data[email2.get()]}")
+        label1.pack()
+        button1 = Button(Login, text="sign up", command=signup)
+        button1.pack()
 def malvar2():
     if email2.get() not in maills:
         label22 = Label(Login,text="userid not found \n")
@@ -22,8 +25,6 @@ def malvar2():
 
 
     elif email2.get() in maills:
-        button2 = Button(Login, text="forget password", command=forgetpass)
-        button2.pack()
         if str(password.get())!=data[email2.get()]:
             label3 = Label(Login,text="wrong passsword \n").pack()
         else:
@@ -62,6 +63,8 @@ def login():
     password.pack()
     button1 = Button(Login, text="login", command=malvar2)
     button1.pack()
+    button2 = Button(Login, text="forget password", command=forgetpass)
+    button2.pack()
 
 
 
