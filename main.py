@@ -84,7 +84,7 @@ def mailver():
                     label1 = Label(Register, text="password is too short",fg="red").pack()
                 elif len(password.get()) > 15:
                     label1 = Label(Register, text="password is too long",fg="red").pack()
-                elif not re.search("[@_!#$%^&*()<>?/\|=}+{~:]", password.get()):
+                elif not re.search("[@_!#$%^&*.,`()<>?/\|=}+{~:]", password.get()):
                     label2 = Label(Register, text="password must have atleast one special character",fg="red").pack()
                 elif not re.search("[a-z]", password.get()):
                     label1 = Label(Register, text="password must have atleast one lower-case",fg="red").pack()
