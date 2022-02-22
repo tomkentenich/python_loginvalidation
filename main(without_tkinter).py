@@ -69,10 +69,10 @@ def password(email):
     password = input("enter your password: ")
     password2 = input("enter your password again: ")
     if password == password2:
-        if len(password) <= 5:
+        if len(password) < 5:
             print("password is too short")
             register()
-        elif len(password) > 15:
+        elif len(password) >16:
             print("password is too long")
             register()
         elif not re.search("[a-z]", password):
@@ -84,7 +84,7 @@ def password(email):
         elif not re.search("[0-9]", password):
             print("password must have atleast one number")
             register()
-        elif not re.search("[$&+,:;=?@#|'<>.-^*()%!]", password):
+        elif not re.search("[\._]", password):
             print("password must have atleast one special character")
             register()
         else:
