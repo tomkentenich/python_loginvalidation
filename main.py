@@ -3,16 +3,15 @@ import re
 
 def welcome():
     welcome=Tk()
-    welcome.geometry("300x250")
+    welcome.geometry("500x450")
     label1 = Label(welcome, text="welcome to the home page you are log in successfully").pack()
     button2 = Button(welcome, text="sign up", command=signup).pack()
 
 
 
 def forgetpass():
-    li=[]
-    li.append(data[str(email2.get())])
-    label1 = Label(Login, text=li)
+
+    label1 = Label(Login, text=f"your password for the {email2.get()} id is {data[email2.get()]}")
     label1.pack()
     button1 = Button(Login, text="sign up", command=signup)
     button1.pack()
@@ -35,7 +34,7 @@ def malvar2():
 def login():
     global Login
     Login=Tk()
-    Login.geometry("300x250")
+    Login.geometry("500x450")
 
     file = open("user.txt", "r")
     global maills
@@ -48,7 +47,6 @@ def login():
         passls.append(b)
     global data
     data = dict(zip(maills, passls))
-    print(data)
     file.close()
 
 
@@ -110,11 +108,10 @@ def register():
         maills.append(a)
         passls.append(b)
     data = dict(zip(maills, passls))
-    print(data)
     file.close()
     global register
     register = Tk()
-    register.geometry("300x250")
+    register.geometry("500x450")
     global email
     global password
     global password2
@@ -134,11 +131,11 @@ def register():
 
 def signup():
     signup = Tk()
-    signup.geometry("300x250")
-    label1=Label(signup,text="welcome to home page").pack()
-    button1=Button(signup,text="login",command=login).pack()
-    button2=Button(signup,text="register",command=register).pack()
-    button3=Button(signup,text="exit",command=quit).pack()
+    signup.geometry("500x450")
+    label1=Label(signup,text="welcome to home page",font=10,).pack()
+    button1=Button(signup,text="login",command=login,width=8,height=1).pack()
+    button2=Button(signup,text="register",command=register,width=8,height=1).pack()
+    button3=Button(signup,text="exit",command=quit,width=8,height=1).pack()
     signup.mainloop()
 
 signup()
