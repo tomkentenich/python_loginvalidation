@@ -2,9 +2,12 @@ from tkinter import *
 import re
 
 def welcome():
+
     welcome=Tk()
     welcome.geometry("500x450")
-    label1 = Label(welcome, text="welcome to the home page you are log in successfully").pack()
+    welcome.title("Welcome")
+
+    label1 = Label(welcome, text="welcome to the home page you are log in successfully",font='Helvetica 14 bold').pack()
     button2 = Button(welcome, text="sign up", command=signup).pack()
 
 
@@ -33,9 +36,11 @@ def malvar2():
 
 
 def login():
+
     global Login
     Login=Tk()
     Login.geometry("500x450")
+    Login.title("login")
 
     file = open("user.txt", "r")
     global maills
@@ -61,17 +66,17 @@ def login():
     label3 = Label(Login, text="password").pack()
     password = Entry(Login)
     password.pack()
-    button1 = Button(Login, text="login", command=malvar2)
-    button1.pack()
-    button2 = Button(Login, text="forget password", command=forgetpass)
-    button2.pack()
+    button1 = Button(Login, text="login", command=malvar2,width=12,height=1,bg="grey")
+    button1.pack(padx=3,pady=12)
+    button2 = Button(Login, text="forget password", command=forgetpass,width=12,height=1,bg="grey")
+    button2.pack(padx=3,pady=4)
 
 
 
 def mailver():
     mail_val = "^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
     if re.search(mail_val, email.get()):
-        if email in maills:
+        if email.get() in maills:
             label1 = Label(register, text="mail already exists").pack()
         else:
             if password.get() == password2.get():
@@ -101,6 +106,7 @@ def mailver():
         label1.pack()
 
 def register():
+
     file = open("user.txt", "r")
     global maills
     maills = []
@@ -115,31 +121,33 @@ def register():
     global register
     register = Tk()
     register.geometry("500x450")
+    register.title("Register")
+
     global email
     global password
     global password2
-    label1 = Label(register, text="register").pack()
-    label2 = Label(register, text="username").pack()
+    label1 = Label(register, text="Register",font=12,bg="red").pack(padx=3,pady=4)
+    label2 = Label(register, text="username",font=8).pack()
     email=Entry(register)
     email.pack()
-    label3 = Label(register, text="password").pack()
+    label3 = Label(register, text="password",font=8).pack()
     password = Entry(register)
     password.pack()
-    label4 = Label(register, text="confirm password").pack()
+    label4 = Label(register, text="confirm password",font=8).pack()
     password2 = Entry(register)
     password2.pack()
-    button1 = Button(register, text="register", command=mailver)
-    button1.pack()
+    button1 = Button(register, text="register", command=mailver,width=12,height=1,bg="grey")
+    button1.pack(padx=3,pady=8)
 
 
 def signup():
     signup = Tk()
     signup.geometry("500x450")
-    label1=Label(signup,text="welcome to home page",font=10,).pack()
-    button1=Button(signup,text="login",command=login,width=8,height=1).pack()
-    button2=Button(signup,text="register",command=register,width=8,height=1).pack()
-    button3=Button(signup,text="exit",command=quit,width=8,height=1).pack()
+    signup.title("Sign up")
+    label1=Label(signup,text="welcome to Sign up",font=12,bg="red").pack(padx=3,pady=4)
+    button1=Button(signup,text="login",command=login,width=12,height=1).pack(padx=3,pady=4)
+    button2=Button(signup,text="register",command=register,width=12,height=1).pack(padx=3,pady=4)
+    button3=Button(signup,text="exit",command=quit,width=12,height=1).pack(padx=3,pady=4)
     signup.mainloop()
 
 signup()
-
